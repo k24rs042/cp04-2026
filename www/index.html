@@ -183,15 +183,23 @@
     
     // ButtonAがクリックされた時の処理
     function btnAClick(e){
-
+        if(!active && period > 0){
         active =true;
         startTime = new Date();
+        }
         
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
-        active = false;
+        if(active){
+            period = period - parseInt((new Date() - startTime) / 1000);
+            if(period < 0){
+                period = 0;
+                }
+                
+                active = false;
+                }
         
         
     }
